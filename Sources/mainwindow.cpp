@@ -12,7 +12,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     CreateWidgets();
     CreateMapping();
     CreateSizePolicy();
-    CreateObjectNames();
     CreateBeginButtonsStyle();
 
     setWindowTitle("TickTackToe");
@@ -129,28 +128,8 @@ void MainWindow::CreateMapping()
     connect(game_button_mapper, SIGNAL(mapped(int)), this, SLOT(slotGameButtonPressed(int)), Qt::UniqueConnection);
 }
 
-void MainWindow::CreateObjectNames()
-{
-    button_0->setObjectName("game_button");
-    button_1->setObjectName("game_button");
-    button_2->setObjectName("game_button");
-    button_3->setObjectName("game_button");
-    button_4->setObjectName("game_button");
-    button_5->setObjectName("game_button");
-    button_6->setObjectName("game_button");
-    button_7->setObjectName("game_button");
-    button_8->setObjectName("game_button");
-}
-
 void MainWindow::CreateBeginButtonsStyle()
 {
-    this->setStyleSheet(
-                "QPushButton {"
-                "border: 2px solid #afafaf;"
-                "background-color: white;"
-                "}"
-                );
-
     button_0->setText("");
     button_1->setText("");
     button_2->setText("");
@@ -160,6 +139,61 @@ void MainWindow::CreateBeginButtonsStyle()
     button_6->setText("");
     button_7->setText("");
     button_8->setText("");
+
+    button_0->setStyleSheet(
+                "QPushButton {"
+                "border: 2px solid #afafaf;"
+                "background-color: white;"
+                "}"
+                );
+    button_1->setStyleSheet(
+                "QPushButton {"
+                "border: 2px solid #afafaf;"
+                "background-color: white;"
+                "}"
+                );
+    button_2->setStyleSheet(
+                "QPushButton {"
+                "border: 2px solid #afafaf;"
+                "background-color: white;"
+                "}"
+                );
+    button_3->setStyleSheet(
+                "QPushButton {"
+                "border: 2px solid #afafaf;"
+                "background-color: white;"
+                "}"
+                );
+    button_4->setStyleSheet(
+                            "QPushButton {"
+                            "border: 2px solid #afafaf;"
+                            "background-color: white;"
+                            "}"
+                            );
+    button_5->setStyleSheet(
+                            "QPushButton {"
+                            "border: 2px solid #afafaf;"
+                            "background-color: white;"
+                            "}"
+                            );
+    button_6->setStyleSheet(
+                            "QPushButton {"
+                            "border: 2px solid #afafaf;"
+                            "background-color: white;"
+                            "}"
+                            );
+    button_7->setStyleSheet(
+                            "QPushButton {"
+                            "border: 2px solid #afafaf;"
+                            "background-color: white;"
+                            "}"
+                            );
+    button_8->setStyleSheet(
+                            "QPushButton {"
+                            "border: 2px solid #afafaf;"
+                            "background-color: white;"
+                            "}"
+                            );
 }
 
 void MainWindow::ChangeBoard(int button_number)

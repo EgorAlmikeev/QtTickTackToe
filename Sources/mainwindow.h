@@ -43,7 +43,6 @@ private :
     //widgets functions
     void CreateWidgets();
     void CreateSizePolicy();
-    void CreateObjectNames();
     void CreateMapping();
     void CreateBeginButtonsStyle();
 
