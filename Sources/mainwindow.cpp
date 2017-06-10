@@ -143,55 +143,55 @@ void MainWindow::CreateBeginButtonsStyle()
     button_0->setStyleSheet(
                 "QPushButton {"
                 "border: 2px solid #afafaf;"
-                "background-color: white;"
+                "background-color: transparent;"
                 "}"
                 );
     button_1->setStyleSheet(
                 "QPushButton {"
                 "border: 2px solid #afafaf;"
-                "background-color: white;"
+                "background-color: transparent;"
                 "}"
                 );
     button_2->setStyleSheet(
                 "QPushButton {"
                 "border: 2px solid #afafaf;"
-                "background-color: white;"
+                "background-color: transparent;"
                 "}"
                 );
     button_3->setStyleSheet(
                 "QPushButton {"
                 "border: 2px solid #afafaf;"
-                "background-color: white;"
+                "background-color: transparent;"
                 "}"
                 );
     button_4->setStyleSheet(
                             "QPushButton {"
                             "border: 2px solid #afafaf;"
-                            "background-color: white;"
+                            "background-color: transparent;"
                             "}"
                             );
     button_5->setStyleSheet(
                             "QPushButton {"
                             "border: 2px solid #afafaf;"
-                            "background-color: white;"
+                            "background-color: transparent;"
                             "}"
                             );
     button_6->setStyleSheet(
                             "QPushButton {"
                             "border: 2px solid #afafaf;"
-                            "background-color: white;"
+                            "background-color: transparent;"
                             "}"
                             );
     button_7->setStyleSheet(
                             "QPushButton {"
                             "border: 2px solid #afafaf;"
-                            "background-color: white;"
+                            "background-color: transparent;"
                             "}"
                             );
     button_8->setStyleSheet(
                             "QPushButton {"
                             "border: 2px solid #afafaf;"
-                            "background-color: white;"
+                            "background-color: transparent;"
                             "}"
                             );
 }
