@@ -1,20 +1,21 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QSplashScreen>
-//#include <unistd.h>
+#include <unistd.h>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
 
-//    QPixmap pixmap(":/images/splash.png");
-//    QSplashScreen splash_screen(pixmap);
+    QPixmap pixmap(":/images/splash.png");
+    QSplashScreen splash_screen(pixmap);
 
-//    splash_screen.show();
+    splash_screen.show();
 
-//    sleep(2);
+    sleep(1);
+
     w.show();
-//    splash_screen.finish(&w);
+    splash_screen.finish(&w);
     return a.exec();
 }

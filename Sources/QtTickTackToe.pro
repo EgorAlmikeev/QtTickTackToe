@@ -30,3 +30,6 @@ SOURCES += \
 HEADERS += \
         mainwindow.h
 
+RESOURCES += \
+    res_file.qrc
+

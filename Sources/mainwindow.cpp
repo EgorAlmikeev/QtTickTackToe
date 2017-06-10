@@ -3,15 +3,17 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QSignalMapper>
+#include <QMessageBox>
 
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
     CreateWidgets();
-    CreateSizePolicy();
     CreateMapping();
+    CreateSizePolicy();
     CreateObjectNames();
+    CreateBeginButtonsStyle();
 
     setWindowTitle("TickTackToe");
 
@@ -26,6 +28,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     first_player = 1;
     second_player = 2;
     current_player = first_player;
+
+    game_finished = false;
 
     x_board_size = 3;
     y_board_size = 3;
@@ -48,6 +52,13 @@ void MainWindow::CreateWidgets()
     central_widget = new QWidget(this);
     central_widget->setLayout(main_layout);
     setCentralWidget(central_widget);
+
+    msgbox = new QMessageBox;
+    msgbox->setText("GAME OVER");
+    msgbox->setIcon(QMessageBox::Information);
+    msgbox->setInformativeText("Restart?");
+    msgbox->setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    msgbox->setDefaultButton(QMessageBox::Yes);
 
     player_screen = new QLabel("PLAYER : 1");
     player_screen->setAlignment(Qt::AlignCenter);
@@ -119,7 +130,37 @@ void MainWindow::CreateMapping()
 }
 
 void MainWindow::CreateObjectNames()
-{}
+{
+    button_0->setObjectName("game_button");
+    button_1->setObjectName("game_button");
+    button_2->setObjectName("game_button");
+    button_3->setObjectName("game_button");
+    button_4->setObjectName("game_button");
+    button_5->setObjectName("game_button");
+    button_6->setObjectName("game_button");
+    button_7->setObjectName("game_button");
+    button_8->setObjectName("game_button");
+}
+
+void MainWindow::CreateBeginButtonsStyle()
+{
+    this->setStyleSheet(
+                "QPushButton {"
+                "border: 2px solid #afafaf;"
+                "background-color: white;"
+                "}"
+                );
+
+    button_0->setText("");
+    button_1->setText("");
+    button_2->setText("");
+    button_3->setText("");
+    button_4->setText("");
+    button_5->setText("");
+    button_6->setText("");
+    button_7->setText("");
+    button_8->setText("");
+}
 
 void MainWindow::ChangeBoard(int button_number)
 {
@@ -258,13 +299,21 @@ void MainWindow::ChangePlayer()
     if(current_player == first_player)
     {
         current_player = second_player;
-        player_screen->setText("PLAYER : 2");
+        DisplayCurrentPlayer();
     }
     else
     {
         current_player = first_player;
-        player_screen->setText("PLAYER : 1");
+        DisplayCurrentPlayer();
     }
+}
+
+void MainWindow::DisplayCurrentPlayer()
+{
+    if(current_player == first_player)
+        player_screen->setText("PLAYER : 1");
+    else
+        player_screen->setText("PLAYER : 2");
 }
 
 void MainWindow::CheckThisPlayerForWin()
@@ -308,13 +357,27 @@ void MainWindow::PlayerWin(short player_number)
         player_screen->setText("DRAW");
 
     SetAllButtonsDisable();
+    game_finished = true;
+
+    msgbox_result = msgbox->exec();
+
+    switch(msgbox_result)
+    {
+    case QMessageBox::Yes : Restart(); break;
+    case QMessageBox::No : exit(0); break;
+    default : exit(0); break;
+    }
 }
 
 void MainWindow::Restart()
 {
     InitializeGameBoard();
-    ClearButtons();
+    CreateBeginButtonsStyle();
     SetAllButtonsEnable();
+
+    game_finished = false;
+    current_player = first_player;
+    DisplayCurrentPlayer();
 }
 
 void MainWindow::InitializeGameBoard()
@@ -367,6 +430,3 @@ void MainWindow::SetAllButtonsDisable()
     if(button_8->isEnabled())
         button_8->setEnabled(false);
 }
-
-void MainWindow::ClearButtons()
-{}

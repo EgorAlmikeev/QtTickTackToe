@@ -7,6 +7,7 @@ class QGridLayout;
 class QLabel;
 class QPushButton;
 class QSignalMapper;
+class QMessageBox;
 
 class MainWindow : public QMainWindow
 {
@@ -30,6 +31,8 @@ private :
     short x_board_size;
     short y_board_size;
 
+    bool game_finished;
+
     //game things
     short game_board[3][3];
 
@@ -42,16 +45,16 @@ private :
     void CreateSizePolicy();
     void CreateObjectNames();
     void CreateMapping();
+    void CreateBeginButtonsStyle();
 
     void SetAllButtonsDisable();
     void SetAllButtonsEnable();
-
-    void ClearButtons();
 
     //game process functions
     void CheckThisPlayerForWin();
     void ChangeBoard(int button_number);
     void ChangePlayer();
+    void DisplayCurrentPlayer();
     void PlayerWin(short player_number);
 
     void Restart();
@@ -66,6 +69,10 @@ private :
     QWidget *central_widget;
     QGridLayout *main_layout;
     QSignalMapper *game_button_mapper;
+
+    QMessageBox *msgbox;
+
+    short msgbox_result;
 
     //game elements
     QLabel *player_screen;
